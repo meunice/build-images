@@ -1,0 +1,171 @@
+[
+    {
+        "name": "windows",
+        "title": "Windows",
+        "nodes": [
+            {
+                "id": "initial-setup",
+                "type": "node",
+                "title": "Initial OS configuration",
+                "script": "scripts/Windows/init_server.ps1",
+                "nodes": [
+                    {
+                        "id": "disable_uac",
+                        "type": "checkbox",
+                        "title": "Disable UAC"
+                    },
+                    {
+                        "id": "set_unrestricted_ps_policy",
+                        "type": "checkbox",
+                        "title": "Change PowerShell execution policy to 'Unrestricted'"
+                    },
+                    {
+                        "id": "disable_server_manager",
+                        "type": "checkbox",
+                        "title": "Disable Server Manager auto-start"
+                    },
+                    {
+                        "id": "disable_wer",
+                        "type": "checkbox",
+                        "title": "Disable Windows Error Reporting (WER)"
+                    },
+                    {
+                        "id": "disable_ie_esc",
+                        "type": "checkbox",
+                        "title": "Disable Internet Explorer ESC"
+                    },
+                    {
+                        "id": "disable_realtime_antivirus",
+                        "type": "checkbox",
+                        "title": "Disable real-time Antivirus"
+                    },
+                    {
+                        "id": "disable_windows_updates",
+                        "type": "checkbox",
+                        "title": "Disable Windows Updates"
+                    },
+                    {
+                        "id": "netfx_35",
+                        "type": "checkbox",
+                        "title": "Install .NET Framework 3.5"
+                    }
+                ]
+            },
+            {
+                "id": "vcs",
+                "type": "node",
+                "title": "Version Control Systems",
+                "nodes": [
+                    {
+                        "id": "git",
+                        "type": "checkbox",
+                        "title": "Git",
+                        "version": "2.21.0",
+                        "script": "scripts/Windows/install_git.ps1"
+                    },
+                    {
+                        "id": "git_lfs",
+                        "type": "checkbox",
+                        "title": "Git LFS",
+                        "version": "2.6.1",
+                        "script": "scripts/Windows/install_git_lfs.ps1"
+                    },
+                    {
+                        "id": "mercurial",
+                        "type": "checkbox",
+                        "title": "Mercurial",
+                        "version": "4.1.1",
+                        "script": "scripts/Windows/install_mercurial.ps1"
+                    },
+                    {
+                        "id": "subversion",
+                        "type": "checkbox",
+                        "title": "Subversion",
+                        "version": "1.8.17",
+                        "script": "scripts/Windows/install_subversion.ps1"
+                    },
+                    {
+                        "id": "github_bitbucket_ssh_hosts",
+                        "type": "checkbox",
+                        "title": "Configure SSH known hosts for GitHub and Bitbucket",
+                        "script": "scripts/Windows/add_ssh_known_hosts.ps1"
+                    }
+                ]
+            },
+            {
+                "id": "docker",
+                "type": "node",
+                "title": "Docker",
+                "nodes": [
+                    {
+                        "id": "engine",
+                        "type": "dropdown",
+                        "title": "Docker engine",
+                        "items": [
+                            {
+                                "id": "desktop",
+                                "title": "Docker Desktop",
+                                "version": "2.1.0.4",
+                                "script": "scripts/Windows/install_docker_desktop.ps1"
+                            },
+                            {
+                                "id": "ee",
+                                "title": "Docker EE for Windows Server",
+                                "version": "17.06.1",
+                                "script": "scripts/Windows/install_docker.ps1"
+                            }  
+                        ]
+                    },
+                    {
+                        "id": "images",
+                        "type": "node",
+                        "title": "Pre-pull Docker images",
+                        "script": "scripts/Windows/install_docker_images.ps1",
+                        "nodes": [
+                            {
+                                "id": "windows_server_core_ltsc2019",
+                                "type": "checkbox",
+                                "title": "mcr.microsoft.com/windows/servercore:ltsc2019"
+                            },
+                            {
+                                "id": "windows_nanoserver_1809",
+                                "type": "checkbox",
+                                "title": "mcr.microsoft.com/windows/nanoserver:1809"
+                            },
+                            {
+                                "id": "windows_server_core_1803",
+                                "type": "checkbox",
+                                "title": "mcr.microsoft.com/windows/servercore:1803"
+                            },
+                            {
+                                "id": "windows_nanoserver_1803",
+                                "type": "checkbox",
+                                "title": "mcr.microsoft.com/windows/nanoserver:1803"
+                            },
+                            {
+                                "id": "windows_server_core_1709",
+                                "type": "checkbox",
+                                "title": "mcr.microsoft.com/windows/servercore:1709"
+                            },
+                            {
+                                "id": "windows_nanoserver_1709",
+                                "type": "checkbox",
+                                "title": "mcr.microsoft.com/windows/nanoserver:1709"
+                            },
+                            {
+                                "id": "windows_server_core_ltsc2016",
+                                "type": "checkbox",
+                                "title": "mcr.microsoft.com/windows/servercore:ltsc2016"
+                            },
+                            {
+                                "id": "windows_nanoserver_sac2016",
+                                "type": "checkbox",
+                                "title": "mcr.microsoft.com/windows/nanoserver:sac2016"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
