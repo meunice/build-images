@@ -161,11 +161,39 @@
                                 "id": "windows_nanoserver_sac2016",
                                 "type": "checkbox",
                                 "title": "mcr.microsoft.com/windows/nanoserver:sac2016"
+                            },
+                            {
+                                "id": "custom_images",
+                                "type": "strings",
+                                "title": "Custom images"
                             }
                         ]
                     }
                 ]
-            }
+            },
+            {
+                "id": "wsl",
+                "type": "node",
+                "title": "Windows Subsystem for Linux (WSL)",
+                "script": "scripts/Windows/install_wsl.ps1",
+                "nodes": [
+                    {
+                        "id": "ubuntu1604",
+                        "type": "checkbox",
+                        "title": "Ubuntu 16.04"
+                    },
+                    {
+                        "id": "ubuntu1804",
+                        "type": "checkbox",
+                        "title": "Ubuntu 18.04"
+                    },
+                    {
+                        "id": "OpenSUSE42",
+                        "type": "checkbox",
+                        "title": "OpenSUSE 4.2"
+                    }                     
+                ]
+            }            
         ]
     }
 ]
