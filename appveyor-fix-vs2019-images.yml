@@ -22,6 +22,9 @@ environment:
     #   APPVEYOR_BAKE_IMAGE: vs2019-master-azure-westus
 
 init:
+  - ps: (Get-Content 'C:\Program files\AppVeyor\BuildAgent\update-appveyor-agent.ps1') -replace '^\$latestVersionUrl = .+', '$latestVersionUrl = ''https://raw.githubusercontent.com/appveyor/build-images/refs/heads/master/appveyor-build-agent-windows-test-version.txt''' | Set-Content 'C:\Program files\AppVeyor\BuildAgent\update-appveyor-agent.ps1'
+  - ps: Get-Content 'C:\Program files\AppVeyor\BuildAgent\update-appveyor-agent.ps1' | Select-String '^\$latestVersionUrl'
+  
   - appveyor version
   - ps: $ErrorActionPreference = 'Stop'
   - ps: $env:cloud_type = (Get-ItemProperty "HKLM:\Software\AppVeyor\Build Agent").Mode
@@ -57,7 +60,7 @@ build_script:
   # - ps: Remove-Item -LiteralPath "C:\Qt\6.5.3" -Recurse -Force
   # - ps: .\install_qt_fast_windows.ps1
 
-  - ps: Remove-Item -Recurse -Force "C:\Program Files (x86)\WindowsPowerShell\Modules\PowerShellGet\1.0.0.1"
+  #- ps: Remove-Item -Recurse -Force "C:\Program Files (x86)\WindowsPowerShell\Modules\PowerShellGet\1.0.0.1"
 
   - ps: $PsVersionTable
   - ps: Get-module PowerShellGet -ListAvailable
@@ -73,7 +76,7 @@ build_script:
   #- ps: .\install_python.ps1
   #- ps: .\install_flutter.ps1
   #- ps: .\install_winsdk_1809.ps1
-  - ps: .\install_coverity.ps1
+  #- ps: .\install_coverity.ps1
   #- ps: .\install_openssl.ps1
   #- ps: Remove-Path "${env:ProgramFiles}\Eclipse Foundation\jdk-8.0.302.8-hotspot\bin" -ErrorAction Stop
   # Restart VM
@@ -81,7 +84,6 @@ build_script:
   # - ps: Start-Sleep -s 5
   #- ps: New-Item -ItemType SymbolicLink -Path "C:\Qt\6.5" -Target "C:\Qt\6.5.1" -Force | Out-Null
 
-  - appveyor version
   - ps: .\cleanup_windows.ps1
 
 # on_finish:
