@@ -1,1 +1,1 @@
-6.3.3+3374 https://appveyordownloads.blob.core.windows.net/build-agent/6.3.3+3374/AppveyorBuildAgent.zip
+6.3.3+3375 https://appveyordownloads.blob.core.windows.net/build-agent/6.3.3+3375/AppveyorBuildAgent.zip
